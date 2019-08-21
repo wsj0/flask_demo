@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../static/jquery.min.js"></script>
+    <script>
+        $(function(){
+            var a=$('#selCour');
+            a.change(function(){
+            location.href="/15-otm-exer?cid="+a.val();
+            });
+        });
+    </script>
+</head>
+<body>
+<select id="selCour">
+    <option value="0">所有</option>
+    {% for cour in params.courses%}
+    <option value="{{ cour.id }}"
+    {% if cour.id == params.cid %}
+    selected
+            {% endif %}
+    >
+        {{ cour.cname }}
+    </option>
+    {% endfor %}
+</select>
+<table width="200" border="1">
+    <tr>
+        <td>姓名</td>
+        <td>年龄</td>
+        <td>所教课程</td>
+    </tr>
+    {% for tea in params.teachers%}
+    <tr>
+        <td>{{ tea.tname}}</td>
+        <td>{{ tea.tage }}</td>
+        <td>{{ tea.course.cname }}</td>
+    </tr>
+    {% endfor %}
+</table>
+</body>
+</html>

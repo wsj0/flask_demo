@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="/05-users">
+    <input type="text" name="kw">
+    <button>搜索</button>
+</form>
+<table width="500" border="1">
+    <tr>
+        <th>name</th>
+        <th>age</th>
+        <th>email</th>
+        <th>birth</th>
+        <th>isActive</th>
+    <tr>
+
+    {% for u in users %}
+    <tr>
+        <td>{{ u.username }}</td>
+        <td>{{ u.age }}</td>
+        <td>{{ u.email }}</td>
+        <td>{{ u.birthday }}</td>
+        <td>
+            <a href="/11-upuser?id={{ u.id }}">修改</a>
+            <a href="#">删除</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+</body>
+</html>
